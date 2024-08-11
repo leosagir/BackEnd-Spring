@@ -5,16 +5,20 @@ import de.ait.app.controller.BookController;
 import de.ait.app.entity.Book;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("de.ait.app");
         BookController bookController = context.getBean(BookController.class);
 
 
-        Scanner scanner = new Scanner(System.in);
+//        Scanner scanner = new Scanner(System.in);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         boolean run = true;
 
         while (run) {
@@ -27,8 +31,8 @@ public class Main {
             System.out.println("6. Удалить книгу");
             System.out.println("7. Выйти");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice;
+            choice= Integer.parseInt(reader.readLine());
 
             switch (choice) {
                 case 1:
@@ -41,7 +45,7 @@ public class Main {
 
                 case 2:
                         System.out.println("Введите имя автора:");
-                        String author = scanner.nextLine();
+                        String author = reader.readLine();
                         books=bookController.getBookByAuthor(author);
                         System.out.println("Книги автора " + author + ":");
                         for (Book book:books){
@@ -51,7 +55,7 @@ public class Main {
 
                 case 3:
                             System.out.println("Введите название книги:");
-                            String title = scanner.nextLine();
+                            String title = reader.readLine();
                             books=bookController.getBookByTitle(title);
                             System.out.println("Книги с названием " + title + ":");
                             for (Book book:books){
@@ -61,7 +65,7 @@ public class Main {
 
                 case 4:
                     System.out.println("Введите жанр книги:");
-                    String genre = scanner.nextLine();
+                    String genre = reader.readLine();
                     books=bookController.getBookByGenre(genre);
                     System.out.println("Книги жанра " + genre + ":");
                     for (Book book:books){
@@ -71,19 +75,19 @@ public class Main {
 
                 case 5:
                                 System.out.println("Введите id книги:");
-                                int id = scanner.nextInt();
+                                int id = Integer.parseInt(reader.readLine());
 
                                 System.out.println("Введите название книги:");
-                                title=scanner.nextLine();
+                                title=reader.readLine();
 
                                 System.out.println("Введите автора книги:");
-                                author = scanner.nextLine();
+                                author = reader.readLine();
 
                                 System.out.println("Введите жанр книги:");
-                                genre = scanner.nextLine();
+                                genre = reader.readLine();
 
                                 System.out.println("Введите описание книги:");
-                                String description = scanner.nextLine();
+                                String description = reader.readLine();
 
                                 Book book = new Book(id, title, author, genre, description);
                                 bookController.addBook(book);
@@ -92,7 +96,7 @@ public class Main {
 
                                 case 6:
                                     System.out.println("Введите id книги для удаления:");
-                                    id = scanner.nextInt();
+                                    id = Integer.parseInt(reader.readLine());
                                     Book bookDel=bookController.getBookById(id);
                                     if(bookDel!=null){
                                         bookController.deleteBook(bookDel);
@@ -114,6 +118,6 @@ public class Main {
             }
         }
         context.close();
-        scanner.close();
+        reader.close();
     }
 }
