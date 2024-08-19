@@ -1,13 +1,13 @@
 package de.ait.books.entity;
 
 public class Book {
-    private int id;
+    private Long id;
     private String title;
     private String author;
     private String genre;
     private String description;
 
-    public Book(int id, String title, String author, String genre, String description) {
+    public Book(Long id, String title, String author, String genre, String description) {
         this.id = id;
         this.title = title;
         this.author = author;
@@ -15,7 +15,10 @@ public class Book {
         this.description = description;
     }
 
-    public int getId() {
+    public Book() {
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -35,7 +38,27 @@ public class Book {
         return description;
     }
 
-public String toString() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String toString() {
     // ANSI escape-коды для цветов
     String reset = "\u001B[0m";
     String red = "\u001B[31m";
