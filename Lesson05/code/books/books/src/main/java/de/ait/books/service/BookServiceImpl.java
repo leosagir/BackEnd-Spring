@@ -4,6 +4,7 @@ import de.ait.books.entity.Book;
 import de.ait.books.repository.BookRepository;
 import de.ait.books.repository.BookRepositoryJDBCImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class BookServiceImpl implements BookServiceInterface {
 
 
     @Autowired
-    public BookServiceImpl(BookRepository bookRepository) {
+    public BookServiceImpl(@Qualifier("bookRepository") BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
 
