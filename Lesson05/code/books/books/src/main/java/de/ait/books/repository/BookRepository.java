@@ -4,7 +4,7 @@ import de.ait.books.entity.Book;
 
 import java.util.List;
 
-public interface BookRepositoryInterface {
+public interface BookRepository {
     List<Book> findAll();
     Book save(Book book);
     Book delete(Book book);

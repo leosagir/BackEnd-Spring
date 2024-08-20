@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 import java.util.List;
 
 @Repository
-public class BookRepositoryJDBCImpl implements BookRepositoryInterface{
+public class BookRepositoryJDBCImpl implements BookRepository {
 
    private final DataSource dataSource;
    private final JdbcTemplate jdbcTemplate;
@@ -70,5 +70,7 @@ public class BookRepositoryJDBCImpl implements BookRepositoryInterface{
             return null;
         }
     }
+
+
 
 }

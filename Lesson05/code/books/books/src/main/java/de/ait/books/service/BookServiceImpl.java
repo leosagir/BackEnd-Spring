@@ -1,6 +1,7 @@
 package de.ait.books.service;
 
 import de.ait.books.entity.Book;
+import de.ait.books.repository.BookRepository;
 import de.ait.books.repository.BookRepositoryJDBCImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,17 +13,17 @@ import java.util.stream.Collectors;
 @Service
 public class BookServiceImpl implements BookServiceInterface {
 
-    private BookRepositoryJDBCImpl bookRepositoryJDBCImpl;
+    private BookRepository bookRepository;
 
 
     @Autowired
-    public BookServiceImpl(BookRepositoryJDBCImpl bookRepositoryJDBCImpl) {
-        this.bookRepositoryJDBCImpl = bookRepositoryJDBCImpl;
+    public BookServiceImpl(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
     @Override
     public List<Book> getAllBooks() {
-        return bookRepositoryJDBCImpl.findAll();
+        return bookRepository.findAll();
     }
 
     @Override
@@ -62,9 +63,9 @@ public class BookServiceImpl implements BookServiceInterface {
 
     @Override
     public Book save(Book book) {
-        return bookRepositoryJDBCImpl.save(book);
+        return bookRepository.save(book);
     }
     public Book delete(Book book) {
-        return bookRepositoryJDBCImpl.delete(book);
+        return bookRepository.delete(book);
     }
 }
