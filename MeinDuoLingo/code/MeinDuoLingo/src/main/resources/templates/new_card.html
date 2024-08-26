@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Neue Karte &ndash; MeinDuoCards App</title>
+</head>
+<body>
+<a data-th-href="@{/templates/my_duo_cards/cards}">&larr; To main</a>
+<h1>Neue Karte</h1>
+
+<form action="/my_duo_cards/new_card" method="post">
+<label>
+    Language:<br>
+    <input type="text" name="language">
+</label><br>
+    <label>
+        Word:<br>
+        <input type="text" name="word">
+    </label><br>
+    <label>
+        Example:<br>
+        <input type="text" name="example">
+    </label><br>
+    <label>
+        Translate Language:<br>
+        <input type="text" name="translate_language">
+    </label><br>
+    <label>
+        Translation:<br>
+        <input type="text" name="translation">
+    </label><br>
+    <label>
+        Group:<br>
+        <input type="text" name="group">
+    </label><br>
+    <button type="submit">Create</button>
+</form>
+
+</body>
+</html>
+
+
+
+

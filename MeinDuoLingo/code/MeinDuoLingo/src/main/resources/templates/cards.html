@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alle Karten &ndash; MeinDuoCards App</title>
+</head>
+<body>
+<a data-th-href="@{/my_duo_cards/new_card}">+ Create new card</a>
+<h1>Alle Karten</h1>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>Language</th>
+        <th>Word</th>
+        <th>Example</th>
+        <th>Translate Language</th>
+        <th>Translation</th>
+        <th>Card Group</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr data-th-each="card : ${list}">
+        <td data-th-text="${card.id}"></td>
+        <td data-th-text="${card.language}"></td>
+        <td data-th-text="${card.word}"></td>
+        <td data-th-text="${card.example}"></td>
+        <td data-th-text="${card.translateLanguage}"></td>
+        <td data-th-text="${card.translation}"></td>
+        <td data-th-text="${card.cardGroup}"></td>
+        <td>
+            <a data-th-href="@{/my_duo_cards/{cardId}(cardId=${card.id})}">Details</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
